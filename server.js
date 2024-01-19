@@ -13,16 +13,27 @@ app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
 });
 
-const lat = 51.5072;
-const lon = 0.1276;
+// const lat = 51.5072;
+// const lon = 0.1276;
 // const part = '';
 const weatherAPI = process.env.openweathermapAPI;
+const googleAPI = process.env.googleAPI;
 
 // JSON Endpoints made with Express
 
 app.get('/weather', async (req, res) => {
+    const { lat, lon } = req.query; // Extract latitude and longitude from the query parameters
     const weatherData = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${weatherAPI}`).then(res => res.json());
-    res.json(weatherData); // <-- respond to http request with json data
+    res.json(weatherData);
+});
+
+app.get('/randomPostcode', async (req, res) => {
+    const randomPostcodeData = await fetch('http://api.postcodes.io/random/postcodes').then(res => res.json());
+    
+    const { postcode, longitude, latitude } = randomPostcodeData.result;
+    
+    // Respond with postcode, longitude, and latitude
+    res.json({ postcode, longitude, latitude });
 });
 
 // app.get('/news', async (req, res) => {
