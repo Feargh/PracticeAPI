@@ -37,9 +37,13 @@ async function fetchRandomPostcode() {
         
         fetchWeather(data.latitude, data.longitude);
 
-        const googleAPIKey = `AIzaSyBvK9xjZMSAS7R7GLPbnnv2V1RDNUtJzMY`;
-        const googleMapSrc = `https://www.google.com/maps/embed/v1/place
-        ?key=${googleAPIKey}&q=${data.latitude},${data.longitude}`;
+        const googleAPIKey = `AIzaSyDcbd-8Rx1dTuVngfg8Qg_wfiQyXH1uJeQ`;
+
+        // Google map src
+        // const googleMapSrc = `https://www.google.com/maps/embed/v1/place?key=${googleAPIKey}&q=${data.latitude},${data.longitude}`;
+
+        // Google Street View src
+        const googleMapSrc = `https://www.google.com/maps/embed/v1/streetview?key=${googleAPIKey}&location=${data.latitude},${data.longitude}&heading=210&pitch=10&fov=35`;
 
         document.getElementById('googleMap').src = googleMapSrc;
 
