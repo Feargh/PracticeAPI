@@ -37,6 +37,8 @@ async function fetchRandomPostcode() {
         
         fetchWeather(data.latitude, data.longitude);
 
+        // Google map section
+
         const googleAPIKey = `AIzaSyDcbd-8Rx1dTuVngfg8Qg_wfiQyXH1uJeQ`;
 
         // Google map src
