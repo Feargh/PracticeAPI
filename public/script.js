@@ -16,6 +16,7 @@ async function fetchWeather(latitude, longitude) {
     document.getElementById('apiData1').innerHTML = 'Current Weather: ' + data.current.weather[0].description + '<br>' + 'Current Temperature: ' + data.current.temp + ' °C';
     
     // All the data from the API call for current
+    console.log(`Current weather: ${data.current}`);
     console.log(data.current);
 }
 
@@ -37,7 +38,8 @@ async function fetchRandomPostcode() {
         fetchWeather(data.latitude, data.longitude);
 
         const googleAPIKey = `AIzaSyBvK9xjZMSAS7R7GLPbnnv2V1RDNUtJzMY`;
-        const googleMapSrc = `https://maps.google.com/maps?q=${data.latitude},${data.longitude}&key=${googleAPIKey}`;
+        const googleMapSrc = `https://www.google.com/maps/embed/v1/place
+        ?key=${googleAPIKey}&q=${data.latitude},${data.longitude}`;
 
         document.getElementById('googleMap').src = googleMapSrc;
 
